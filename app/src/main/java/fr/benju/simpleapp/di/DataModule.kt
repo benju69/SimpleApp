@@ -5,7 +5,10 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import fr.benju.simpleapp.BuildConfig
+import fr.benju.simpleapp.data.WeatherRepositoryImpl
+import fr.benju.simpleapp.domain.WeatherRepository
 import fr.benju.simpleapp.network.model.BASE_URL
+import fr.benju.simpleapp.network.model.WeatherApi
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
@@ -56,12 +59,12 @@ object DataModule {
         .build()
 
 
-//    @Provides
-//    @Singleton
-//    fun provideApi(retrofit: Retrofit) = retrofit.create()
+    @Provides
+    @Singleton
+    fun provideApi(retrofit: Retrofit): WeatherApi = retrofit.create(WeatherApi::class.java)
 
-//    @Provides
-//    @Singleton
-//    fun bindRepository(api: Api)
+    @Provides
+    @Singleton
+    fun bindRepository(api: WeatherApi): WeatherRepository = WeatherRepositoryImpl(api)
 
 }
