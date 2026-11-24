@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 sealed interface UiState{
     data object LoadingState: UiState
-    data class Success(val currentWeather: Result<CurrentWeather>) : UiState
+    data class Success(val currentWeather: CurrentWeather) : UiState
     data class ErrorState(val errorMessage: String): UiState
 }
 
@@ -32,12 +32,16 @@ class WeatherViewModel @Inject constructor(
     fun load() {
         _state.value = UiState.LoadingState
         viewModelScope.launch {
-            try {
-                val currentWeather = weatherRepository.getCurrentWeather()
-                _state.value = UiState.Success(currentWeather)
-            } catch (e: Exception) {
-                _state.value = UiState.ErrorState(e.message ?: "An error occurred")
-            }
+//            try {
+//                val currentWeather = weatherRepository.getCurrentWeather()
+//                _state.value = UiState.Success(currentWeather)
+//            } catch (e: Exception) {
+//                _state.value = UiState.ErrorState(e.message ?: "An error occurred")
+//            }
+            _state.value = weatherRepository.getCurrentWeather().fold(
+                onSuccess = { UiState.Success(it) },
+                onFailure = { UiState.ErrorState(it.message ?: "An error occurred") }
+            )
         }
     }
 }

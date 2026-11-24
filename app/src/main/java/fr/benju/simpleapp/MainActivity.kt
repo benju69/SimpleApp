@@ -1,12 +1,9 @@
 package fr.benju.simpleapp
 
 import android.os.Bundle
-import android.widget.Space
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.viewModels
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -91,15 +88,15 @@ fun WeatherScreen(innerPadding: PaddingValues, viewModel: WeatherViewModel = hil
                     .fillMaxSize()
                     .fillMaxHeight(),
             ) {
-                Text(text = "Temperature: ${(state as UiState.Success).currentWeather.getOrNull()?.temperature.toString()} °C")
+                Text(text = "Temperature: ${(state as UiState.Success).currentWeather.temperature} °C")
 
                 Spacer(modifier = Modifier.padding(8.dp))
 
-                Text(text = "Condition: ${(state as UiState.Success).currentWeather.getOrNull()?.condition.toString()}")
+                Text(text = "Condition: ${(state as UiState.Success).currentWeather.condition}")
 
                 Spacer(modifier = Modifier.padding(8.dp))
 
-                Text(text = "Location: ${(state as UiState.Success).currentWeather.getOrNull()?.locationName.toString()}")
+                Text(text = "Location: ${(state as UiState.Success).currentWeather.locationName}")
             }
         }
     }

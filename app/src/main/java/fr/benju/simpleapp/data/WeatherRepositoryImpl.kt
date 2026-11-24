@@ -2,7 +2,7 @@ package fr.benju.simpleapp.data
 
 import fr.benju.simpleapp.domain.CurrentWeather
 import fr.benju.simpleapp.domain.WeatherRepository
-import fr.benju.simpleapp.network.model.WeatherApi
+import fr.benju.simpleapp.network.WeatherApi
 import fr.benju.simpleapp.network.model.toDomain
 import javax.inject.Inject
 

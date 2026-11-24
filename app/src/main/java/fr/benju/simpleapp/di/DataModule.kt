@@ -7,8 +7,8 @@ import dagger.hilt.components.SingletonComponent
 import fr.benju.simpleapp.BuildConfig
 import fr.benju.simpleapp.data.WeatherRepositoryImpl
 import fr.benju.simpleapp.domain.WeatherRepository
-import fr.benju.simpleapp.network.model.BASE_URL
-import fr.benju.simpleapp.network.model.WeatherApi
+import fr.benju.simpleapp.network.BASE_URL
+import fr.benju.simpleapp.network.WeatherApi
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
